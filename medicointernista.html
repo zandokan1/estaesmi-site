@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALTHEA - Dr. Medicina Interna | ESTAESMI.INFO</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .business-card {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.1),
+                0 8px 32px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .header-section {
+            padding: 30px 25px 20px;
+            text-align: center;
+            position: relative;
+            background: white;
+        }
+        
+        .logo-container {
+            margin-bottom: 15px;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo svg {
+            width: 100%;
+            height: 100%;
+            fill: #26d0ce;
+        }
+        
+        .brand-name {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #333;
+            letter-spacing: 0.3em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .video-section {
+            width: 100%;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .hero-video {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 0;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.6));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .content-section {
+            padding: 0 25px 30px;
+            color: #333;
+            background: white;
+        }
+        
+        .specialty-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #26d0ce;
+        }
+        
+        .description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555;
+            text-align: justify;
+        }
+        
+        .services-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        
+        .services-list {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            color: #555;
+        }
+        
+        .contact-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(38, 208, 206, 0.1);
+            color: #26d0ce;
+            border: 1px solid rgba(38, 208, 206, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            background: rgba(38, 208, 206, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-instagram {
+            background: rgba(228, 64, 95, 0.1);
+            color: #e4405f;
+            border-color: rgba(228, 64, 95, 0.3);
+        }
+        
+        .btn-call {
+            background: rgba(0, 123, 255, 0.1);
+            color: #007bff;
+            border-color: rgba(0, 123, 255, 0.3);
+        }
+        
+        .btn-whatsapp {
+            background: rgba(37, 211, 102, 0.1);
+            color: #25d366;
+            border-color: rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-email {
+            background: rgba(108, 117, 125, 0.1);
+            color: #6c757d;
+            border-color: rgba(108, 117, 125, 0.3);
+        }
+        
+        .btn-location {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border-color: rgba(220, 53, 69, 0.3);
+            grid-column: 1 / -1;
+        }
+        
+        .qr-section {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(38, 208, 206, 0.2);
+        }
+        
+        .qr-code {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 8px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #666;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(38, 208, 206, 0.2);
+        }
+        
+        .medical-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #26d0ce;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 480px) {
+            .business-card {
+                max-width: 350px;
+            }
+            
+            .brand-name {
+                font-size: 1.8rem;
+                letter-spacing: 0.2em;
+            }
+            
+            .contact-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn-location {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="business-card">
+        <div class="header-section">
+            <i class="fas fa-stethoscope medical-icon"></i>
+            
+            <div class="logo-container">
+                <div class="logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="currentColor">
+                            <!-- Logo ALTHEA con rayos turquesa -->
+                            <!-- Centro principal -->
+                            <rect x="46" y="46" width="8" height="8" rx="1"/>
+                            
+                            <!-- Rayos principales (cruz) -->
+                            <rect x="48" y="15" width="4" height="25" rx="2"/>
+                            <rect x="48" y="60" width="4" height="25" rx="2"/>
+                            <rect x="15" y="48" width="25" height="4" rx="2"/>
+                            <rect x="60" y="48" width="25" height="4" rx="2"/>
+                            
+                            <!-- Rayos diagonales -->
+                            <rect x="48" y="25" width="4" height="18" rx="2" transform="rotate(45 50 34)"/>
+                            <rect x="48" y="57" width="4" height="18" rx="2" transform="rotate(45 50 66)"/>
+                            <rect x="25" y="48" width="18" height="4" rx="2" transform="rotate(45 34 50)"/>
+                            <rect x="57" y="48" width="18" height="4" rx="2" transform="rotate(45 66 50)"/>
+                            
+                            <!-- Puntos finales de rayos -->
+                            <circle cx="50" cy="12" r="3"/>
+                            <circle cx="50" cy="88" r="3"/>
+                            <circle cx="12" cy="50" r="3"/>
+                            <circle cx="88" cy="50" r="3"/>
+                            
+                            <!-- Puntos diagonales -->
+                            <circle cx="22" cy="22" r="2.5"/>
+                            <circle cx="78" cy="22" r="2.5"/>
+                            <circle cx="22" cy="78" r="2.5"/>
+                            <circle cx="78" cy="78" r="2.5"/>
+                            
+                            <!-- Elementos decorativos intermedios -->
+                            <circle cx="35" cy="35" r="2"/>
+                            <circle cx="65" cy="35" r="2"/>
+                            <circle cx="35" cy="65" r="2"/>
+                            <circle cx="65" cy="65" r="2"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            
+            <h1 class="brand-name">ALTHEA</h1>
+        </div>
+        
+        <div class="video-section">
+            <video class="hero-video" controls autoplay muted loop>
+                <source src="6.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+            <div class="video-overlay">
+                <p style="font-size: 0.9rem; font-weight: 500;">Equipo Médico Profesional</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="specialty-title">Medicina Interna</h2>
+            
+            <p class="description">
+                La medicina interna se enfoca en el diagnóstico, tratamiento y prevención de enfermedades en adultos. 
+                Nuestro equipo de especialistas brinda atención integral y personalizada para mantener tu salud óptima.
+            </p>
+            
+            <h3 class="services-title">Servicios Especializados:</h3>
+            <div class="services-list">
+                • Consulta médica<br>
+                • Valoración preoperatoria<br>
+                • Seguimiento y control de enfermedades crónico degenerativas<br>
+                • Toma de electrocardiograma<br>
+                • Toma de glucosa capilar<br>
+                • Monitoreo ambulatorio de la presión arterial
+            </div>
+            
+            <div class="contact-buttons">
+                <a href="#" class="btn btn-instagram">
+                    <i class="fab fa-instagram"></i>
+                    Instagram
+                </a>
+                
+                <a href="#" class="btn btn-call">
+                    <i class="fas fa-phone"></i>
+                    Llamar
+                </a>
+                
+                <a href="#" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    Enviar Mensaje
+                </a>
+                
+                <a href="#" class="btn btn-email">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+                
+                <a href="#" class="btn btn-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Ubicación
+                </a>
+            </div>
+            
+            <div class="qr-section">
+                <div class="qr-code">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
