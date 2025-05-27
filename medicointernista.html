@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALTHEA - Dr. Medicina Interna | ESTAESMI.INFO</title>
+    <title>ALTHEA - Dr. Abdiel Almanza Toledo | Medicina Interna</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -14,7 +14,7 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #a8e6ce 0%, #7fcdcd 50%, #26d0ce 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -29,8 +29,8 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 
-                0 25px 60px rgba(0, 0, 0, 0.1),
-                0 8px 32px rgba(0, 0, 0, 0.05);
+                0 25px 60px rgba(0, 0, 0, 0.15),
+                0 8px 32px rgba(0, 0, 0, 0.1);
             position: relative;
         }
         
@@ -72,61 +72,73 @@
         .video-section {
             width: 100%;
             position: relative;
-            margin-bottom: 20px;
+            background: #f0f8ff;
         }
         
-        .hero-video {
+        .slide-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 0;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         
-        .video-overlay {
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-content {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.6));
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
             color: white;
-            padding: 20px;
+            padding: 40px 20px 20px;
             text-align: center;
+        }
+        
+        .doctor-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .doctor-specialty {
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .slide-text {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        
+        .slide-services {
+            font-size: 0.9rem;
+            line-height: 1.3;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
         
         .content-section {
-            padding: 0 25px 30px;
+            padding: 25px;
             color: #333;
             background: white;
-        }
-        
-        .specialty-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-            color: #26d0ce;
-        }
-        
-        .description {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: #555;
-            text-align: justify;
-        }
-        
-        .services-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #333;
-        }
-        
-        .services-list {
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 25px;
-            color: #555;
         }
         
         .contact-buttons {
@@ -137,57 +149,49 @@
         }
         
         .btn {
-            padding: 12px 18px;
+            padding: 14px 18px;
             border: none;
-            border-radius: 12px;
+            border-radius: 15px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            background: rgba(38, 208, 206, 0.1);
-            color: #26d0ce;
-            border: 1px solid rgba(38, 208, 206, 0.3);
+            gap: 10px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         
         .btn:hover {
-            transform: translateY(-2px);
-            background: rgba(38, 208, 206, 0.2);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn i {
+            font-size: 1.1rem;
         }
         
         .btn-instagram {
-            background: rgba(228, 64, 95, 0.1);
-            color: #e4405f;
-            border-color: rgba(228, 64, 95, 0.3);
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
         }
         
         .btn-call {
-            background: rgba(0, 123, 255, 0.1);
-            color: #007bff;
-            border-color: rgba(0, 123, 255, 0.3);
+            background: linear-gradient(45deg, #0088cc, #0066aa);
         }
         
         .btn-whatsapp {
-            background: rgba(37, 211, 102, 0.1);
-            color: #25d366;
-            border-color: rgba(37, 211, 102, 0.3);
+            background: linear-gradient(45deg, #25d366, #128c7e);
         }
         
         .btn-email {
-            background: rgba(108, 117, 125, 0.1);
-            color: #6c757d;
-            border-color: rgba(108, 117, 125, 0.3);
+            background: linear-gradient(45deg, #666, #888);
         }
         
         .btn-location {
-            background: rgba(220, 53, 69, 0.1);
-            color: #dc3545;
-            border-color: rgba(220, 53, 69, 0.3);
+            background: linear-gradient(45deg, #ea4335, #c23321);
             grid-column: 1 / -1;
         }
         
@@ -220,6 +224,28 @@
             font-size: 1.5rem;
         }
         
+        .slide-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .indicator.active {
+            background: white;
+        }
+        
         @media (max-width: 480px) {
             .business-card {
                 max-width: 350px;
@@ -236,6 +262,14 @@
             
             .btn-location {
                 grid-column: 1;
+            }
+            
+            .doctor-name {
+                font-size: 1.2rem;
+            }
+            
+            .doctor-specialty {
+                font-size: 1rem;
             }
         }
     </style>
@@ -291,33 +325,67 @@
         </div>
         
         <div class="video-section">
-            <video class="hero-video" controls autoplay muted loop>
-                <source src="6.mp4" type="video/mp4">
-                Tu navegador no soporta videos HTML5.
-            </video>
-            <div class="video-overlay">
-                <p style="font-size: 0.9rem; font-weight: 500;">Equipo Médico Profesional</p>
+            <div class="slide-container">
+                <!-- Slide 1: Doctor Name -->
+                <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('6.mp4')">
+                    <div class="slide-content">
+                        <h2 class="doctor-name">Abdiel Almanza Toledo</h2>
+                        <p class="doctor-specialty">Especialista en Medicina Interna</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 2: Medical Team -->
+                <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('6.mp4')">
+                    <div class="slide-content">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Equipo Médico Profesional</h3>
+                        <p style="font-size: 0.9rem;">Especialistas comprometidos con tu salud</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 3: Description -->
+                <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('6.mp4')">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <p>Medicina interna se enfoca en el diagnóstico, tratamiento y prevención de enfermedades en adultos. Su función principal es proporcionar atención médica integral y personalizada a pacientes con enfermedades complejas o crónicas.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4: Chronic Conditions -->
+                <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('6.mp4')">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <p>Coordina el cuidado a largo plazo para pacientes con condiciones como diabetes, hipertensión, enfermedad pulmonar obstructiva crónica (EPOC), enfermedades de la tiroides, riñón, obesidad entre otras.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 5: Services -->
+                <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('6.mp4')">
+                    <div class="slide-content">
+                        <div class="slide-services">
+                            <p><strong>Servicios Especializados:</strong></p>
+                            <p>• Consulta médica<br>
+                            • Valoración preoperatoria<br>
+                            • Seguimiento y control de enfermedades crónico degenerativas<br>
+                            • Toma de electrocardiograma<br>
+                            • Toma de glucosa capilar<br>
+                            • Monitoreo ambulatorio de la presión arterial</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slide-indicators">
+                <span class="indicator active" onclick="currentSlide(1)"></span>
+                <span class="indicator" onclick="currentSlide(2)"></span>
+                <span class="indicator" onclick="currentSlide(3)"></span>
+                <span class="indicator" onclick="currentSlide(4)"></span>
+                <span class="indicator" onclick="currentSlide(5)"></span>
             </div>
         </div>
         
         <div class="content-section">
-            <h2 class="specialty-title">Medicina Interna</h2>
-            
-            <p class="description">
-                La medicina interna se enfoca en el diagnóstico, tratamiento y prevención de enfermedades en adultos. 
-                Nuestro equipo de especialistas brinda atención integral y personalizada para mantener tu salud óptima.
-            </p>
-            
-            <h3 class="services-title">Servicios Especializados:</h3>
-            <div class="services-list">
-                • Consulta médica<br>
-                • Valoración preoperatoria<br>
-                • Seguimiento y control de enfermedades crónico degenerativas<br>
-                • Toma de electrocardiograma<br>
-                • Toma de glucosa capilar<br>
-                • Monitoreo ambulatorio de la presión arterial
-            </div>
-            
             <div class="contact-buttons">
                 <a href="#" class="btn btn-instagram">
                     <i class="fab fa-instagram"></i>
@@ -326,22 +394,22 @@
                 
                 <a href="#" class="btn btn-call">
                     <i class="fas fa-phone"></i>
-                    Llamar
+                    LLAMAR
                 </a>
                 
                 <a href="#" class="btn btn-whatsapp">
                     <i class="fab fa-whatsapp"></i>
-                    Enviar Mensaje
+                    ENVIAR MENSAJE
                 </a>
                 
                 <a href="#" class="btn btn-email">
                     <i class="fas fa-envelope"></i>
-                    Email
+                    EMAIL
                 </a>
                 
                 <a href="#" class="btn btn-location">
                     <i class="fas fa-map-marker-alt"></i>
-                    Ubicación
+                    UBICACIÓN
                 </a>
             </div>
             
@@ -352,5 +420,39 @@
             </div>
         </div>
     </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            let indicators = document.getElementsByClassName("indicator");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            for (let i = 0; i < indicators.length; i++) {
+                indicators[i].classList.remove("active");
+            }
+            
+            slides[slideIndex-1].classList.add("active");
+            indicators[slideIndex-1].classList.add("active");
+        }
+
+        // Auto advance slides
+        setInterval(function() {
+            slideIndex++;
+            showSlides(slideIndex);
+        }, 4000);
+    </script>
 </body>
 </html>
